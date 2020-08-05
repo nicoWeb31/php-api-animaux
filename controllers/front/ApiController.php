@@ -1,10 +1,19 @@
 <?php 
 
+require_once "models/front/ApiManager.php";
+
 class ApiController 
 {
 
 
-    
+    private $apiManager;
+
+    public function __construct()
+    {
+        $this->apiManager = new ApiManager();
+    }
+
+
 
     /**
      * Permet de recuperer d'envoyer la resource au router
@@ -12,7 +21,8 @@ class ApiController
      * @return void
      */
     public function getAnimaux(){
-        echo "animaux";
+        $animaux = $this->apiManager->getDbAnimaux();
+        var_dump($animaux);
     }
 
     /**
