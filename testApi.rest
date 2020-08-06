@@ -1,0 +1,7 @@
+
+# //get sur les familles
+# Get http://localhost/php-api/front/familles
+
+//get sur les familles
+
+Get http://localhost/php-api/front/animal/3

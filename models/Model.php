@@ -6,7 +6,7 @@ abstract class Model
     const DB_USER = 'root';
     const DB_PASSWORD = '';
     const DB_HOST ='localhost';
-    const DB_NAME = 'php-cour-api-animaux';
+    const DB_NAME = 'php-cour-api-animaux;charset=utf8';
 
     private static function setBdd(){
         self::$pdo = new PDO('mysql:host='.Model::DB_HOST.'; dbname='.Model::DB_NAME, Model::DB_USER, Model::DB_PASSWORD);
@@ -21,6 +21,15 @@ abstract class Model
         }
         return self::$pdo;
         
+    }
+
+
+    public static function sendJson($data){
+
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json");
+        echo json_encode($data);
+
     }
 
 
