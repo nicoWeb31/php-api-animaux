@@ -4,4 +4,4 @@
 
 //get sur les familles
 
-Get http://localhost/php-api/front/animal/3
+Get http://localhost/php-api/front/continents

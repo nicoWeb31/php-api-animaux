@@ -6,7 +6,7 @@ abstract class Model
     const DB_USER = 'root';
     const DB_PASSWORD = '';
     const DB_HOST ='localhost';
-    const DB_NAME = 'php-cour-api-animaux;charset=utf8';
+    const DB_NAME = 'php-cour-api-animaux;charset=utf8mb4';
 
     private static function setBdd(){
         self::$pdo = new PDO('mysql:host='.Model::DB_HOST.'; dbname='.Model::DB_NAME, Model::DB_USER, Model::DB_PASSWORD);
@@ -28,7 +28,7 @@ abstract class Model
 
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json");
-        echo json_encode($data);
+        echo json_encode($data,JSON_UNESCAPED_UNICODE );
 
     }
 
