@@ -84,6 +84,8 @@ class ApiManager
 
         $stmt->execute();
         $continent =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($continent);
         return $continent;
+
     }
 }

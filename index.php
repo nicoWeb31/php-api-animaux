@@ -13,7 +13,6 @@ try{
         throw new Exception("La page n'existe pas");
     } else {
         $url = explode("/",filter_var($_GET['page'],FILTER_SANITIZE_URL));
-        echo var_dump($url[0]);
         if(empty($url[0]) || empty($url[1])) throw new Exception ("La page n'existe pas");
         switch($url[0]){
             //routing pour le front
