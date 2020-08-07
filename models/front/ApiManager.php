@@ -51,6 +51,7 @@ class ApiManager
         //bindvalue
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
+        $stmt->closeCuror();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -82,6 +83,7 @@ class ApiManager
         $stmt = $this->db->prepare($req);
 
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $continent =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $continent;
     }
 }
