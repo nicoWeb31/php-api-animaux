@@ -4,5 +4,8 @@
 
 //get sur les familles
 
-Get http://localhost/php-api/front/animaux
+Get http://localhost/php-api/front/animaux/asie/2
+
+
+
 

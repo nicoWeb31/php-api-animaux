@@ -31,6 +31,80 @@ class ApiManager
     }
 
 
+
+    /**
+     * fetch information amimaux in db avec les infos famille et continent
+     *
+     * @return array
+     */
+    public function getAnimauxDBWithParam($idcontinent,$idFamille){
+
+        
+        // if($idcontinent){
+        //     $req = "SELECT * 
+        // FROM animal a inner join famille f
+        // on f.famille_id = a.famille_id
+        // inner join animal_continent ac on ac.animal_id = a.animal_id
+        // inner join continent c on c.continent = ac.continent
+        // WHERE c.continent=:idContinent
+        // ";
+
+        // $stmt = $this->db->prepare($req);
+        // if($idcontinent) $stmt->bindValue(":idContinent",$idcontinent);
+
+        // $stmt->execute();
+        // return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // }
+
+        // if($idcontinent  && $idFamille){
+            $req = "SELECT * 
+        FROM animal a inner join famille f
+        on f.famille_id = a.famille_id
+        inner join animal_continent ac on ac.animal_id = a.animal_id
+        inner join continent c on c.continent = ac.continent
+        WHERE c.continent = :idContinent
+        AND f.famille_id = :idFamille
+        ";
+
+        $stmt = $this->db->prepare($req);
+        if($idcontinent) $stmt->bindValue(":idContinent",$idcontinent);
+        if($idFamille) $stmt->bindValue(":idFamille",$idFamille);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //}
+
+    }
+
+
+    /**
+     * fetch information amimaux filter by continent
+     *
+     * @return array
+     */
+    public function getAnimauxDbByContinent($idcontinent){
+
+            $req = "SELECT * 
+        FROM animal a inner join famille f
+        on f.famille_id = a.famille_id
+        inner join animal_continent ac on ac.animal_id = a.animal_id
+        inner join continent c on c.continent = ac.continent
+        WHERE c.continent = :idContinent
+        ";
+
+        $stmt = $this->db->prepare($req);
+        if($idcontinent) $stmt->bindValue(":idContinent",$idcontinent);
+
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    }
+
+
+
+
     /**
      * fetch information amimal in db, woth $id
      * @return  array

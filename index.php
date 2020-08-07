@@ -19,7 +19,17 @@ try{
             case "front" : 
                 switch($url[1]){
                     //ressource json collection animaux
-                    case "animaux": $apiController->getAnimaux();
+                    case "animaux": 
+                        if(!isset($url[2])){
+                            $apiController->getAnimaux();
+                        }else if(!isset($url[3])) {
+                            $apiController->getAnimauxWithParamConti($url[2]);
+                        }else if(!isset($url[4])) {
+                            $apiController->getAnimauxWithParam($url[2], (int)$url[3]);
+                        }
+
+
+                        
                     break;
 
                     //donne une ressorce animal

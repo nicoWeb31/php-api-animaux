@@ -34,7 +34,7 @@ class ApiController
                     "id" => $ligne['animal_id'],
                     "nom" => $ligne['animal_nom'],
                     "description" => $ligne['animal_description'],
-                    "image" => $ligne['animal_image'],
+                    "image" => URL."public/img/".$ligne['animal_image'],
                     "famille" => [
                         "idFamille" => $ligne['famille_id'],
                         "libelleFamille" => $ligne['famille_libelle'],
@@ -72,6 +72,36 @@ class ApiController
         Model::sendJson($this->formatAnimaux($animaux));
 
     }
+
+
+
+    /**
+     * Permet de recuperer d'envoyer la resource au router animaux avec les param famille et continent
+     *
+     * @return void
+     */
+    public function getAnimauxWithParam($idCont,$idFam){
+        $animauxWithParam = $this->apiManager->getAnimauxDBWithParam($idCont,$idFam);
+        Model::sendJson($this->formatAnimaux($animauxWithParam));
+
+    }
+
+
+    /**
+     * Permet de recuperer d'envoyer la resource au router animaux par continent
+     *
+     * @return void
+     */
+    public function getAnimauxWithParamConti($idCont){
+        $animauxWithParam = $this->apiManager->getAnimauxDbByContinent($idCont);
+        Model::sendJson($this->formatAnimaux($animauxWithParam));
+
+    }
+
+
+
+
+
 
     /**
      * Permet de recuperer d'envoyer la resource au router pour un animal
