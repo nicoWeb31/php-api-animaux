@@ -4,8 +4,6 @@
 
 //get sur les familles
 
-Get http://localhost/php-api/front/animaux/asie/2
-
-
+Get http://localhost/php-api/front/continents
 
 
