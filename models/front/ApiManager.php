@@ -62,7 +62,8 @@ class ApiManager
         on f.famille_id = a.famille_id
         inner join animal_continent ac on ac.animal_id = a.animal_id
         inner join continent c on c.continent = ac.continent
-        WHERE c.continent = :idContinent
+        WHERE a.animal_id IN
+        (select a.animal_id from animal_continent WHERE continent = :idContinent)
         AND f.famille_id = :idFamille
         ";
 
@@ -98,9 +99,8 @@ class ApiManager
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
     }
+
 
 
 
@@ -128,7 +128,6 @@ class ApiManager
         $stmt->closeCuror();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
 
     /**
