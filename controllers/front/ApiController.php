@@ -137,4 +137,26 @@ class ApiController
         $famille = $this->apiManager->getDbFamille();
         Model::sendJson($famille);
     }
+
+    /**
+     * Permet de recuperer de rcuperer les message de la page contact
+     *
+     */
+    public function sendContact(){
+
+        header("Access-Control-Allow-Origin: * ");
+        header("Access-Control-Allow-Methods: POST,GET,PUT,DELETE ");
+        header("Access-Control-Allow-Headers:  Accept,Content-type, Content-Length,Accept-Encoding,X-CSRF-Token,Authorization");
+
+        header("Content-Type: application/json");
+
+        $obj= json_decode(file_get_contents('php://input'));
+        $messRetour = [
+            'from'=>$obj->email,
+            'to'=>"contact@toto.com"
+        ];
+
+        echo json_encode($messRetour,JSON_UNESCAPED_UNICODE );
+
+    }
 }

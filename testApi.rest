@@ -1,9 +1,16 @@
 
-# //get sur les familles
-# Get http://localhost/php-api/front/familles
 
-//get sur les familles
+Get http://localhost/php-api/front/familles
 
-Get http://localhost/php-api/front/continents
+###
+
+POST  http://localhost/php-api/front/contact 
+content-type: application/json
+
+{
+    "nom":"nicolas",
+    "email":"slkdfjsd",
+    "message":"qsdflkhsdjffffffffffffffffffffsdf" 
+}
 
 
